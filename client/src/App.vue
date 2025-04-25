@@ -34,7 +34,7 @@ const users = reactive({}); // socketId -> { username, x, y, displayX, displayY,
 const validateUsername = () => {
   if (!usernameInput.value.trim()) return;
   username.value = usernameInput.value.trim();
-  socket.value = io('http://localhost:3000');
+  socket.value = io(import.meta.env.VITE_SOCKET_URL);
   socket.value.emit('register', username.value);
 
   socket.value.on('users', (usersArray) => {
